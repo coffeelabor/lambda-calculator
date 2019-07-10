@@ -23,25 +23,31 @@ function App() {
 
   const [state, setState] = useState({
     // totalDisplay: 0,
-    number: 56,
+    number: 0,
     operation: null,
     totalResult: 0
   });
 
-  function buttonClick = () => {
-    setState({ ...state, number: number });
-  }
+  const buttonClick = firstNumber => {
+    // setState().number(firstNumber);
+    setState({ number: firstNumber });
+  };
 
+  const display = () => {
+    // setState.totalResult = state.number;
+    setState({ totalResult: state.number });
+  };
 
   return (
     <div className="container">
       <h1>test</h1>
 
       <div className="App">
+        <h1>{state.totalResult}</h1>
         {/* STEP 4 - Render your components here and be sure to properly import/export all files */}
         <Logo />
-        <Display {...state} />
-        <Numbers {...state} />
+        <Display {...state} display={display} />
+        <Numbers {...state} clickHandler={buttonClick} />
         <Operators {...state} />
         <Specials {...state} />
       </div>
